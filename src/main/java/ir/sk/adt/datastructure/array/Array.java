@@ -58,7 +58,7 @@ public class Array {
      */
     @TimeComplexity("O(n)")
     public void insert(int index, int value) {
-        RotationShift.rightShift(array, index, size);
+        RotationShift.rightShiftByWriteIndex(array, index, size);
         array[index] = value;
         size++;
     }

@@ -62,7 +62,7 @@ public class SortedArray {
             if (array[j] > (value)) // (linear search)
                 break;
 
-        RotationShift.rightShift(array, j, size);
+        RotationShift.rightShiftByWriteIndex(array, j, size);
 
         array[j] = value;
         size++;

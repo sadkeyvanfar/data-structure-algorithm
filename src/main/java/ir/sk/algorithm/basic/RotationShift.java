@@ -7,35 +7,31 @@ import ir.sk.helper.complexity.TimeComplexity;
  * Created by sad.kayvanfar on 9/16/2020.
  */
 public class RotationShift {
-    /**
-     * shifting - right rotation just one unit
-     *
-     * @param array      the source array.
-     * @param startIndex starting position
-     * @param endIndex   finishing position
-     */
-    @TimeComplexity("O(n)")
-    @SpaceComplexity("O(1)")
-    public static void rightRotate(int[] array, int startIndex, int endIndex) {
-        int temp = array[endIndex];
-        rightShift(array, startIndex, endIndex);
-        array[startIndex] = temp;
-    }
 
     /**
+     * the read index is used in the loop
      * @param array
-     * @param startIndex
-     * @param endIndex
+     * @param startIndex inclusive
+     * @param endIndex exclusive
      */
-    public static void rightShift(int[] array, int startIndex, int endIndex) {
+    public static void rightShiftByReadIndex(int[] array, int startIndex, int endIndex) {
         for (int i = endIndex - 1; i >= startIndex; i--)
             array[i + 1] = array[i];
     }
 
     /**
-     * @param array
-     * @param startIndex
-     * @param endIndex
+     * write index is used in the loop
+     * @param startIndex inclusive
+     * @param endIndex exclusive
+     */
+    public static void rightShiftByWriteIndex(int[] array, int startIndex, int endIndex) {
+        for (int i = endIndex; i > startIndex; i--)
+            array[i] = array[i -1];
+    }
+
+    /**
+     * @param startIndex inclusive
+     * @param endIndex exclusive
      */
     public static void leftShift(int[] array, int startIndex, int endIndex) {
         for (int i = startIndex; i < endIndex; i++)
@@ -44,13 +40,28 @@ public class RotationShift {
 
     /**
      * @param array
-     * @param startIndex
-     * @param endIndex
-     * @param unit
+     * @param startIndex inclusive
+     * @param endIndex exclusive
+     * @param unit the number of units to shift
      */
     public static void leftShift(int[] array, int startIndex, int endIndex, int unit) {
         for (int i = startIndex; i + unit < endIndex; i++)
             array[i] = array[i + unit];
+    }
+
+    /**
+     * shifting - right rotation just one unit
+     *
+     * @param array      the source array.
+     * @param startIndex starting position
+     * @param endIndex   finishing position,
+     */
+    @TimeComplexity("O(n)")
+    @SpaceComplexity("O(1)")
+    public static void rightRotate(int[] array, int startIndex, int endIndex) {
+        int temp = array[endIndex];
+        rightShiftByWriteIndex(array, startIndex, endIndex);
+        array[startIndex] = temp;
     }
 
     // another way of rotation is Circular Array

@@ -69,4 +69,27 @@ public class RotationShiftTest {
         Assert.assertArrayEquals(expected, array);
     }
 
+    @Test
+    public void rightShiftByWriteIndex() {
+        int[] expected = new int[]{1, 2, 2, 3, 4, 6};
+        System.out.println(Arrays.toString(array));
+        long start = System.currentTimeMillis();
+        RotationShift.rightShiftByWriteIndex(array, 1, 4);
+        long end = System.currentTimeMillis();
+        System.out.println("rightShiftByWriteIndex took " + (end - start) + " MilliSeconds");
+        System.out.println(Arrays.toString(array));
+        Assert.assertArrayEquals(expected, array);
+    }
+
+    @Test
+    public void rightShiftByReadIndex() {
+        int[] expected = new int[]{1, 2, 2, 3, 4, 6};
+        System.out.println(Arrays.toString(array));
+        long start = System.currentTimeMillis();
+        RotationShift.rightShiftByReadIndex(array, 1, 4);
+        long end = System.currentTimeMillis();
+        System.out.println("rightShiftByReadIndex took " + (end - start) + " MilliSeconds");
+        System.out.println(Arrays.toString(array));
+        Assert.assertArrayEquals(expected, array);
+    }
 }
