@@ -4,6 +4,10 @@ import ir.sk.helper.complexity.SpaceComplexity;
 import ir.sk.helper.complexity.TimeComplexity;
 
 /**
+ * note: we consider two indexes of read and write
+ * read index is used to read the elements from the array
+ * write index is used to write the elements into the array
+ * <p>
  * Created by sad.kayvanfar on 9/16/2020.
  */
 public class RotationShift {
