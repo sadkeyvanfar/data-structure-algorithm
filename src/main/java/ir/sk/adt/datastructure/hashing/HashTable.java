@@ -9,6 +9,9 @@ import ir.sk.helper.pattern.HashingIndexPattern;
  * It efficiently implements the dictionary ADT with efficient insert, remove and find operations, each taking O(1)O(1) expected time.
  * hashing part is done by hash function that maps keys to positions in the array. and in that index we can store the value associated with that key.
  * in this example we are just storing boolean values to indicate presence of a key.
+ * the most important ADT of it is Map ADT.
+ * collision handling is not implemented in this simple example.
+ * but generally collision handling is done by chaining or open addressing.
  */
 @HashingIndexPattern
 public class HashTable {
