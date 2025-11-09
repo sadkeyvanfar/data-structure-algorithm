@@ -133,11 +133,16 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
         bucketArray[bucketIndex] = newNode;
 
         //  when Load Factor (n/m) is 1, Time Complexity is exact O(1)
-        double loadFactor = ((1.0 * size) / capacity);
+        double loadFactor = getLoadFactor();
         if (loadFactor >= this.maxLoadFactor) {
             // size of new array = 2 * numBuckets (Table Doubling): It's the best size for growing the size of array
             reHash(2 * capacity);
         }
+    }
+
+    private double getLoadFactor() {
+        double loadFactor = ((1.0 * size) / capacity);
+        return loadFactor;
     }
 
     /**
@@ -201,7 +206,7 @@ public class ChainingDictionary<K, V> implements Dictionary<K, V> {
             bucketArray[bucketIndex] = head.next;
 
         // Shrink
-        double loadFactor = ((1.0 * size) / capacity);
+        double loadFactor = getLoadFactor();
         if (loadFactor <= this.maxLoadFactor) {
             // size of new array = numBuckets / 4 (Table Shrink): It's the best size for shrinking the size of array
             reHash(capacity / 4);
