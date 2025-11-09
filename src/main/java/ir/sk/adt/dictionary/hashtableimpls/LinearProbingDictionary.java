@@ -86,7 +86,7 @@ public class LinearProbingDictionary<K, V> implements Dictionary<K, V> {
         //find next free space
         while (array[hashIndex] != null && array[hashIndex].key != key) {
             hashIndex++;
-            hashIndex %= capacity;
+            hashIndex %= capacity; // wrap around
         }
 
         //if new node to be inserted increase the current size
